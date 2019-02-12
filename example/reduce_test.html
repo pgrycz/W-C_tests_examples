@@ -69,12 +69,6 @@ tests({
       numberOfTimesCallbackHasRun ++;
     }, 0);
     eq(numberOfTimesCallbackHasRun, 1);
-    
-    // function reduce(array, callback, initialValue) { // 1 test
-    //   for (var i = 0; i < array.length; i ++) { // 1 test
-    //     callback(); // 1 test
-    //   }
-    // }
   },
   '2: If no initial value, callback should run array.length - 1 times.': function() {
     var numberOfTimesCallbackHasRun = 0;
@@ -82,114 +76,33 @@ tests({
       numberOfTimesCallbackHasRun ++;
     });
     eq(numberOfTimesCallbackHasRun, 0);
-
-    // function reduce(array, callback, initialValue) {
-    // var startingIndex = 0; // 2 test
-    // if (arguments.length < 3) { // 2 test, no initialValue
-    //   startingIndex ++; // 2 test
-    // }
-    //   for (var i = startingIndex; i < array.length; i ++) { // 2 test
-    //     callback();
-    //   }
-    // }
   },
 
   '3: If initialValue, previousValue should start with initialValue.': function() {
     reduce([1], function(previousValue){
       eq(previousValue, 0); // check if previousValue === 0
     }, 0); // previousValue set to 0
-
-    // function reduce(array, callback, initialValue) {
-    // var startingIndex = 0;
-    // if (arguments.length < 3) { // no initialValue
-    //   startingIndex ++;
-    // }
-    //   for (var i = startingIndex; i < array.length; i ++) {
-    //     callback(initialValue); // 3 test
-    //   }
-    // }
   },
   '4: If initialValue, currentValue should start with array[0].': function() {
     reduce([1], function(previousValue, currentValue){
       eq(currentValue, 1);
     }, 0);
-
-    // function reduce(array, callback, initialValue) {
-    // var startingIndex = 0;
-    // if (arguments.length < 3) { // no initialValue
-    //   startingIndex ++;
-    // }
-    //   for (var i = startingIndex; i < array.length; i ++) {
-    //     callback(initialValue, array[0]); // 4 test
-    //   }
-    // }
-  },
-  '5: If initialValue, callback will start at index 0.': function() {
-    reduce([1], function(previousValue, currentValue, currentIndex){
-      eq(currentIndex, 0);
-    }, 0);
-
-    // function reduce(array, callback, initialValue) {
-    // var startingIndex = 0;
-    // if (arguments.length < 3) { // no initialValue
-    //   startingIndex ++;
-    // }
-    //   for (var i = startingIndex; i < array.length; i ++) {
-    //     callback(initialValue, array[0], i); // 5 test
-    //   }
-    // }
   },
 
   '6: If no initialValue, previousValue should start with array[0].': function() {
     reduce([1, 2], function(previousValue) {
       eq(previousValue, 1);
     });
-
-    // function reduce(array, callback, initialValue) {
-    // var startingIndex = 0;
-    // var resultSoFar = initialValue; // 6 test
-    // if (arguments.length < 3) { // no initialValue
-    //   resultSoFar = array[startingIndex]; // 6 test
-    //   startingIndex ++;
-    // }
-    //   for (var i = startingIndex; i < array.length; i ++) {
-    //     callback(resultSoFar, array[0], i); // 6 test
-    //   }
-    // }
   },
   '7: If no initialValue, currentValue should start with array[1].': function() {
     reduce([1, 2], function(previousValue, currentValue){
       eq(currentValue, 2);
     });
-
-    // function reduce(array, callback, initialValue) {
-    // var startingIndex = 0;
-    // var resultSoFar = initialValue;
-    // if (arguments.length < 3) { // no initialValue
-    //   resultSoFar = array[startingIndex];
-    //   startingIndex ++;
-    // }
-    //   for (var i = startingIndex; i < array.length; i ++) {
-    //     callback(resultSoFar, array[i], i); // 7 test
-    //   }
-    // }
   },
   '8: If no initialValue, callback will start at index 1.': function() {
     reduce([1, 2], function(previousValue, currentValue, currentIndex){
       eq(currentIndex, 1);
     });
-
-    // function reduce(array, callback, initialValue) {
-    // var startingIndex = 0;
-    // var resultSoFar = initialValue;
-    // if (arguments.length < 3) { // no initialValue
-    //   resultSoFar = array[startingIndex];
-    //   startingIndex ++;
-    // }
-    //   for (var i = startingIndex; i < array.length; i ++) {
-    //     callback(resultSoFar, array[i], i); // 8 test same as 5 test
-    //   }
-    // }
   },
 
   '9: If initialValue and array is empty, return initialValue without calling callback.': function() {
@@ -200,22 +113,6 @@ tests({
     }, initialValue);
     eq(reduceResult, initialValue);
     eq(numberOfTimesCallbackHasRun, 0);
-
-    // function reduce(array, callback, initialValue) {
-    // var startingIndex = 0;
-    // var resultSoFar = initialValue;
-    // if (arguments.length < 3) { // no initialValue
-    //   resultSoFar = array[startingIndex];
-    //   startingIndex ++;
-    // } else { // 9 test, has initialValue
-    //   if (Object.keys(array).length === 0) { // 9 test, if array is empty
-    //     return initialValue; // 9 test
-    //   }
-    // }
-    //   for (var i = startingIndex; i < array.length; i ++) {
-    //     callback(resultSoFar, array[i], i);
-    //   }
-    // }
   },
   '10: If no initialValue and array has one element, it should return that element without calling callback.': function() {
     var numberOfTimesCallbackHasRun = 0;
@@ -224,118 +121,24 @@ tests({
     });
     eq(reduceResult, 1);
     eq(numberOfTimesCallbackHasRun, 0);
-
-    // function reduce(array, callback, initialValue) {
-    // var startingIndex = 0;
-    // var resultSoFar = initialValue;
-    // if (arguments.length < 3) { // no initialValue
-    //   if (Object.keys(array).length === 1) { // 10 test, if one element in array just return it
-    //     var onlyIndex = Object.keys(array)[0]; // 10 test
-    //     var onlyElement = array[onlyIndex]; // 10 test
-    //     return onlyElement; // 10 test
-    //   }
-    //   resultSoFar = array[startingIndex];
-    //   startingIndex ++;
-    // } else { // 9 test, has initialValue
-    //   if (Object.keys(array).length === 0) { // if array is empty
-    //     return initialValue;
-    //   }
-    // }
-    //   for (var i = startingIndex; i < array.length; i ++) {
-    //     callback(resultSoFar, array[i], i);
-    //   }
-    // }
   },
   '11: It should actually reduce.': function() {
     var sum = reduce([1,2,3], function(a, b) {
       return a + b;
     }, 0);
     eq(sum, 6);
-
-    // function reduce(array, callback, initialValue) {
-    // var startingIndex = 0;
-    // var resultSoFar = initialValue;
-    // if (arguments.length < 3) { // no initialValue
-    //   if (Object.keys(array).length === 1) { // if one element in array just return it
-    //     var onlyIndex = Object.keys(array)[0];
-    //     var onlyElement = array[onlyIndex];
-    //     return onlyElement;
-    //   }
-    //   resultSoFar = array[startingIndex];
-    //   startingIndex ++;
-    // } else { // has initialValue
-    //   if (Object.keys(array).length === 0) { // if array is empty
-    //     return initialValue;
-    //   }
-    // }
-    //   for (var i = startingIndex; i < array.length; i ++) {
-    //     resultSoFar = callback(resultSoFar, array[i], i); // 11 test
-    //   }
-    //   return resultSoFar; // 11 test
-    // }
   },
   '12: If initialValue, it should exclude holes.': function() {
     var sum = reduce([,2,3,,5,], function(a, b) {
       return a + b;
     }, 2);
     eq(sum, 12);
-
-    // function reduce(array, callback, initialValue) {
-    // var startingIndex = 0;
-    // var resultSoFar = initialValue;
-    // if (arguments.length < 3) { // no initialValue
-    //   if (Object.keys(array).length === 1) { // if one element in array just return it
-    //     var onlyIndex = Object.keys(array)[0];
-    //     var onlyElement = array[onlyIndex];
-    //     return onlyElement;
-    //   }
-    //   resultSoFar = array[startingIndex];
-    //   startingIndex ++;
-    // } else { // has initialValue
-    //   if (Object.keys(array).length === 0) { // if array is empty
-    //     return initialValue;
-    //   }
-    // }
-    //   for (var i = startingIndex; i < array.length; i ++) {
-    //     if (i in array) { // 12 test, passes if i in array is true, skips false (empty) indexes
-    //       resultSoFar = callback(resultSoFar, array[i], i); // 12 test
-    //     }
-    //   }
-    //   return resultSoFar;
-    // }
   },
   '13: If no initialValue, it should exclude holes too.': function() {
     var sum = reduce([,2,3,,5,], function(a, b) { // hole at index 0 so need to fix the 
       return a + b;
     });
     eq(sum, 10);
-
-    // function reduce(array, callback, initialValue) {
-    // var startingIndex = 0;
-    // var resultSoFar = initialValue;
-    // if (arguments.length < 3) { // no initialValue
-    //   if (Object.keys(array).length === 1) { // if one element in array just return it
-    //     var onlyIndex = Object.keys(array)[0];
-    //     var onlyElement = array[onlyIndex];
-    //     return onlyElement;
-    //   }
-    //   while (startingIndex in array === false) { // 13 test, while there're holes at the beginning of the array
-    //     startingIndex ++; // 13 test
-    //   }
-    //   resultSoFar = array[startingIndex];
-    //   startingIndex ++;
-    // } else { // has initialValue
-    //   if (Object.keys(array).length === 0) { // if array is empty
-    //     return initialValue;
-    //   }
-    // }
-    //   for (var i = startingIndex; i < array.length; i ++) {
-    //     if (i in array) {
-    //       resultSoFar = callback(resultSoFar, array[i], i);
-    //     }
-    //   }
-    //   return resultSoFar;
-    // }
   },
 
   '14: If array is empty and no initialValue throw TypeError.': function() {
@@ -346,75 +149,12 @@ tests({
       isTypeError = (error instanceof TypeError);
     }
     eq(isTypeError, true);
-
-    // function reduce(array, callback, initialValue) {
-    // var startingIndex = 0;
-    // var resultSoFar = initialValue;
-    // if (arguments.length < 3) { // no initialValue
-    //   if (Object.keys(array).length === 0) { // 14 test, if array is empty throw typeError, [].reduce(function(){}); gives this typeError, but for reduce([], function(){}); it needs to add it manually as without setting this error it gives undefined
-    //     throw new TypeError('Reduce of empty array with no initial value'); // 14 test
-    //   }
-    //   if (Object.keys(array).length === 1) { // if one element in array just return it
-    //     var onlyIndex = Object.keys(array)[0];
-    //     var onlyElement = array[onlyIndex];
-    //     return onlyElement;
-    //   }
-    //   while (startingIndex in array === false && startingIndex < array.length) { // 14 test, if array is empty, [] or [,,,], the while loop will run forever so it needs limitation 
-    //     startingIndex ++;
-    //   }
-    //   resultSoFar = array[startingIndex];
-    //   startingIndex ++;
-    // } else { // has initialValue
-    //   if (Object.keys(array).length === 0) { // if array is empty
-    //     return initialValue;
-    //   }
-    // }
-    //   for (var i = startingIndex; i < array.length; i ++) {
-    //     if (i in array) {
-    //       resultSoFar = callback(resultSoFar, array[i], i);
-    //     }
-    //   }
-    //   return resultSoFar;
-    // }
   },
   '15: It should pass array as fourth argument to callback.': function() {
     var testArray = [1,2];
     reduce(testArray, function(previousValue, currentValue, currentIndex, arrayToReduce) {
       eq(arrayToReduce, testArray); // arrayToReduce should be equal to testArray
     });
-
-    // function reduce(array, callback, initialValue) {
-    // // 'Object.keys(array)', 'array.length' may be assigned as variables as optional code refactoring
-    // var startingIndex = 0;
-    // var resultSoFar = initialValue;
-    // // no initialValue
-    // if (arguments.length < 3) {
-    //   if (Object.keys(array).length === 0) { // if array is empty throw typeError
-    //     throw new TypeError('Reduce of empty array with no initial value');
-    //   }
-    //   if (Object.keys(array).length === 1) { // if one element in array just return it
-    //     var onlyIndex = Object.keys(array)[0];
-    //     var onlyElement = array[onlyIndex];
-    //     return onlyElement;
-    //   }
-    //   while (startingIndex in array === false) { // while there're holes at the beginning of the array
-    //     startingIndex ++;
-    //   }
-    //   resultSoFar = array[startingIndex];
-    //   startingIndex ++;
-    // // has initialValue
-    // } else {
-    //   if (Object.keys(array).length === 0) { // if array is empty
-    //     return initialValue;
-    //   }
-    // }
-    //   for (var i = startingIndex; i < array.length; i ++) {
-    //     if (i in array) {
-    //       resultSoFar = callback(resultSoFar, array[i], i, array); // 15 test
-    //     }
-    //   }
-    //   return resultSoFar;
-    // }
   }
 });
 
