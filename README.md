@@ -1,6 +1,9 @@
-# JS test examples based on tinytest.js library
+# Javascript tests examples using tinytest.js library
 built-in js methods tested
-- forEach 
+- forEach
 - map
 - filter
-- reduce 
+- reduce
+
+To run tests go to 'example' folder and run each .html file.
+All tests are listed in web browser's console while only results are shown in window.

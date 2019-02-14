@@ -1,6 +1,8 @@
 <script src="../tinytest.js"></script>
 <script>
   
+  // prototype implementation:
+
   // Example 1:
   // forEach([1,2,3], function() {
   //  console.log('hi);
@@ -66,7 +68,7 @@ tests({
   '5: It should accept an optional this object': function() {
     forEach([1], function(){
       /* this accessible in the callback*/ eq(this.description, 'I should be accessible inside of the callback.');
-    }, /* optional this -> */{description: 'I should be accessible inside of the callback.'});
+    }, /* optional this -> */ {description: 'I should be accessible inside of the callback.'});
   }
 });
 </script>
