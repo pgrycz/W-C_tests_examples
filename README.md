@@ -8,6 +8,8 @@ built-in js methods tested
 To run tests go to 'example' folder and run each .html file.
 All tests are listed in web browser's console while only results are shown in window.
 
+Customized tinytest.js file is as simpletest.js in 'example' folder.
+
 
 
 
@@ -50,7 +52,7 @@ Create a test page called `adder-test.html` (you can name it anything). This inc
    },
 
    'subtracts numbers': function() {
-     eq(-2, add(2, -4)); 
+     eq(-2, add(2, -4));
    },
 
  });
