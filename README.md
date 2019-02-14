@@ -8,7 +8,7 @@ built-in Javascript methods are tested
 To run tests go to **'example'** folder and run each .html file.
 All tests are listed in web browser's console while only results are shown in window.
 
-Customized **tinytest.js** file is as **simpletest.js** file in **'example'** folder.
+Customized **tinytest.js** file is as **simpletest.js** file in **'example'** folder. It sums up all tests in browser's window.
 
 
 
