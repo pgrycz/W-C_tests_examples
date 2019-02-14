@@ -5,10 +5,10 @@ built-in js methods tested
 - filter
 - reduce
 
-To run tests go to 'example' folder and run each .html file.
+To run tests go to **'example'** folder and run each .html file.
 All tests are listed in web browser's console while only results are shown in window.
 
-Customized tinytest.js file is as simpletest.js file in 'example' folder.
+Customized **tinytest.js** file is as **simpletest.js** file in **'example'** folder.
 
 
 
